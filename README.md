@@ -51,16 +51,16 @@ In this step, a Service Principal is created and granted access to resources in 
 ### Service Principal
 ![Authentication](screenshot/architecture.png)
 ### Workspace Share
-![Workspace Share](screenshot\workspace_share.png)
+![Workspace Share](screenshot/workspace_share.png)
 
 ## AutoML Experiment
 With authentication completed, in this step, we create and register a dataset with the workspace. Registering a dataset ensures that it persists and is accessible to all users across a workspace. It also allows versioning. A compute cluster is also created as target for the AutoML classification experiment. 
 ### Registered Datasets
-![Registered Dataset](screenshot\dataset.png)
+![Registered Dataset](screenshot/dataset.png)
 ### Completed Experiment
-![Completed Experiment](screenshot\completed_experiment.png)
+![Completed Experiment](screenshot/completed_experiment.png)
 ### Best Model
-![Best Model](screenshot\best_model.PNG)
+![Best Model](screenshot/best_model.PNG)
 
 ## Deploy the Best Model
 Azure AutoML tries and reports performance of a handful of models before outputting the best performing model. The outputted model is deployed in this step enabling it to respond to POST requests sent over HTTP. 
@@ -68,37 +68,37 @@ Azure AutoML tries and reports performance of a handful of models before outputt
 ## Enable Logging
 The health of the deployed model is critical and logs allow us to monitor health.In this step, we enable Application Insights by retrieving the deployed Webservice object and updating its configurations. Subsequently, the logs can then be viewed by running [logs.py](starter_files\logs.py). 
 ### Application Insights Enabled
-![Application Insights](screenshot\app_insights.png)
+![Application Insights](screenshot/app_insights.png)
 ### Logging Enabled
-![Logs](screenshot\logs.png)
+![Logs](screenshot/logs.png)
 
 ## Swagger Documentation
 Testing the deployed model allows us to monitor both performance and behavior. The Swager UI allows us to achieve this. Azure provides a JSON files with description of the expected behavior of the deployed model. When run in a docker container, the Swagger UI allows examination of thie JSON file as well as interaction with the model endpoint. 
 ### Swagger UI
-![Swagger](screenshot\swagger.png)
-![Swagger](screenshot\swagger2.png)
+![Swagger](screenshot/swagger.png)
+![Swagger](screenshot/swagger2.png)
 
 ## Consume Model Endpoints
 The model can also be interacted with python scripts and this step achieves that. Azure provides a scoring uri to allow access to the model as well as a key to ensure security. These are necessary in order to interact with the model using Python scripts locally. Further, the robustness of the deployed model's performance is investigated using the Apache Benchmark. 
 ### Endpoint Result
-![Endpoint](screenshot\endpoint.png)
+![Endpoint](screenshot/endpoint.png)
 ### Apache Benchmark
-![Apache Benchmark](screenshot\benchmark.png)
+![Apache Benchmark](screenshot/benchmark.png)
 
 ## Create and Publish a Pipeline
 The created pipeline is published in this section to ensure that it can be rerun using HTTTP Requests. This feature becomes important and incredibly convenient as newer versions of the BankMarketing dataset are registered in the workspace. 
 ### Create Pipeline
-![Pipeline](screenshot\pipeline.png)
+![Pipeline](screenshot/pipeline.png)
 ### Bankmarketing dataset with AutoML Module
-![Bankmarketing](screenshot\bankmarketing.png)
+![Bankmarketing](screenshot/bankmarketing.png)
 ### Published Pipeline overview
-![Published Pipeline](screenshot\pipeline2.png)
+![Published Pipeline](screenshot/pipeline2.png)
 ### Use RunDetailsWidget
-![RunDetails Widget](screenshot\rundetails.png)
+![RunDetails Widget](screenshot/rundetails.png)
 ### Pipeline Endpoint
-![Pipeline Endpoint](screenshot\pipendpoint.png)
+![Pipeline Endpoint](screenshot/pipendpoint.png)
 ###  Scheduled run in ML Studio
-![Scheduled run](screenshot\scheduled_run.png)
+![Scheduled run](screenshot/scheduled_run.png)
 
 # Future Improvements
 While AzureML's AutoML is incredibly powerful, in future experiments it will be interesting to implement a pipeline with multiple steps. Data cleaning, preprocessing and model building can reside in individual steps. Machine Learning involves a lot of experimentation and decoupling the steps this way will ease experimentation and iteration towards the best performing model. An example of where experimentation may pay off is in feature interactions. For many classfication tasks, feature interactions can help improve the performance of model. A multi-step pipeline ensures that experimentation with feature interactions can be done without making undue changes, deliberately or indeliberately, to other aspects of the pipeline. 
