@@ -1,0 +1,5 @@
+# environment folder
+/env
+
+# config files
+config.json
